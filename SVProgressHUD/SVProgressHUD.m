@@ -12,6 +12,7 @@
 #import "SVProgressHUD.h"
 #import "SVIndefiniteAnimatedView.h"
 #import "SVRadialGradientLayer.h"
+#import "RKeyboardListener.h"
 
 NSString * const SVProgressHUDDidReceiveTouchEventNotification = @"SVProgressHUDDidReceiveTouchEventNotification";
 NSString * const SVProgressHUDDidTouchDownInsideNotification = @"SVProgressHUDDidTouchDownInsideNotification";
@@ -1192,24 +1193,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (CGFloat)visibleKeyboardHeight{
 #if !defined(SV_APP_EXTENSIONS)
-    UIWindow *keyboardWindow = nil;
-    for (UIWindow *testWindow in [[UIApplication sharedApplication] windows]){
-        if(![[testWindow class] isEqual:[UIWindow class]]){
-            keyboardWindow = testWindow;
-            break;
-        }
-    }
-    
-    for (__strong UIView *possibleKeyboard in [keyboardWindow subviews]){
-        if([possibleKeyboard isKindOfClass:NSClassFromString(@"UIPeripheralHostView")] || [possibleKeyboard isKindOfClass:NSClassFromString(@"UIKeyboard")]){
-            return CGRectGetHeight(possibleKeyboard.bounds);
-        } else if([possibleKeyboard isKindOfClass:NSClassFromString(@"UIInputSetContainerView")]){
-            for (__strong UIView *possibleKeyboardSubview in [possibleKeyboard subviews]){
-                if([possibleKeyboardSubview isKindOfClass:NSClassFromString(@"UIInputSetHostView")]){
-                    return CGRectGetHeight(possibleKeyboardSubview.bounds);
-                }
-            }
-        }
+    if ([RKeyboardListener sharedManager].keyboardIsOnScreen) {
+        return [RKeyboardListener sharedManager].keyboardFrame.size.height;
     }
 #endif
     return 0;

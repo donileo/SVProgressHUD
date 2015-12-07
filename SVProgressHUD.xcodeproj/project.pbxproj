@@ -19,6 +19,9 @@
 		65F0220015C857EF0030BBEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65F021FF15C857EF0030BBEF /* Foundation.framework */; };
 		65F0220515C857EF0030BBEF /* SVProgressHUD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65F0220415C857EF0030BBEF /* SVProgressHUD.h */; };
 		65F0220715C857EF0030BBEF /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F0220615C857EF0030BBEF /* SVProgressHUD.m */; };
+		7A3CCA0C1C1532E200FD0C4E /* RKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CCA0B1C1532E200FD0C4E /* RKeyboardListener.m */; };
+		7A3CCA0E1C1536D400FD0C4E /* RKeyboardListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3CCA0B1C1532E200FD0C4E /* RKeyboardListener.m */; };
+		7A3CCA0F1C1537FA00FD0C4E /* RKeyboardListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A3CCA0A1C1532E200FD0C4E /* RKeyboardListener.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,8 @@
 		65F0220415C857EF0030BBEF /* SVProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		65F0220615C857EF0030BBEF /* SVProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		65F0220D15C858060030BBEF /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7A3CCA0A1C1532E200FD0C4E /* RKeyboardListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKeyboardListener.h; sourceTree = "<group>"; };
+		7A3CCA0B1C1532E200FD0C4E /* RKeyboardListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKeyboardListener.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +119,8 @@
 		65F0220115C857EF0030BBEF /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				7A3CCA0A1C1532E200FD0C4E /* RKeyboardListener.h */,
+				7A3CCA0B1C1532E200FD0C4E /* RKeyboardListener.m */,
 				3CB14F9A1AFBCB57003C2641 /* SVRadialGradientLayer.h */,
 				3CB14F9B1AFBCB57003C2641 /* SVRadialGradientLayer.m */,
 				65F0220415C857EF0030BBEF /* SVProgressHUD.h */,
@@ -143,6 +150,7 @@
 			files = (
 				4A9D7DF31AB345E10039B273 /* SVProgressHUD.h in Headers */,
 				4A9D7DF41AB345E80039B273 /* SVIndefiniteAnimatedView.h in Headers */,
+				7A3CCA0F1C1537FA00FD0C4E /* RKeyboardListener.h in Headers */,
 				3CB14F9C1AFBCB57003C2641 /* SVRadialGradientLayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +244,7 @@
 				4A9D7DF11AB345DD0039B273 /* SVProgressHUD.m in Sources */,
 				3CB14F9E1AFBCB57003C2641 /* SVRadialGradientLayer.m in Sources */,
 				4A9D7DF21AB345DD0039B273 /* SVIndefiniteAnimatedView.m in Sources */,
+				7A3CCA0E1C1536D400FD0C4E /* RKeyboardListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +255,7 @@
 				65F0220715C857EF0030BBEF /* SVProgressHUD.m in Sources */,
 				3CB14F9D1AFBCB57003C2641 /* SVRadialGradientLayer.m in Sources */,
 				4A9D7DD11AB345540039B273 /* SVIndefiniteAnimatedView.m in Sources */,
+				7A3CCA0C1C1532E200FD0C4E /* RKeyboardListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
