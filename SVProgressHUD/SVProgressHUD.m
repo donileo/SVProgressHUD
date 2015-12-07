@@ -108,6 +108,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     [[self sharedView] setStatus:status];
 }
 
++ (void)setDefaultStartingSize:(CGSize)size{
+  [self sharedView].defaultStartingSize = size;
+}
+
 + (void)setDefaultStyle:(SVProgressHUDStyle)style{
     [self sharedView].defaultStyle = style;
 }
@@ -348,6 +352,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             _errorImage = errorImage;
         }
 
+        _defaultStartingSize = CGSizeMake(100.f, 100.f);
         _ringThickness = 2;
         _ringRadius = 18;
         _ringNoTextRadius = 24;
@@ -362,8 +367,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 - (void)updateHUDFrame{
-    CGFloat hudWidth = 100.0f;
-    CGFloat hudHeight = 100.0f;
+    CGFloat hudWidth = self.defaultStartingSize.width;
+    CGFloat hudHeight = self.defaultStartingSize.height;
     CGFloat stringHeightBuffer = 20.0f;
     CGFloat stringAndContentHeightBuffer = 80.0f;
     CGRect labelRect = CGRectZero;
@@ -375,7 +380,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     // Calculate and apply sizes
     NSString *string = self.stringLabel.text;
     if(string){
-        CGSize constraintSize = CGSizeMake(200.0f, 300.0f);
+        CGSize constraintSize = CGSizeMake(2 * hudWidth, 3 * hudHeight);
         CGRect stringRect;
         if([string respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]){
             stringRect = [string boundingRectWithSize:constraintSize
@@ -390,7 +395,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 #if TARGET_OS_IOS
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
-                stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:CGSizeMake(200.0f, 300.0f)];
+                stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:CGSizeMake(2 * hudWidth, 3 * hudHeight)];
 #pragma clang diagnostic pop
 #endif
             }
@@ -409,7 +414,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             hudWidth = ceilf(stringWidth/2)*2;
         }
         CGFloat labelRectY = (imageUsed || progressUsed) ? 68.0f : 9.0f;
-        if(hudHeight > 100.0f){
+        if(hudHeight > self.defaultStartingSize.height){
             labelRect = CGRectMake(12.0f, labelRectY, hudWidth, stringHeight);
             hudWidth += 24.0f;
         } else{
@@ -1222,6 +1227,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 - (void)setDefaultAnimationType:(SVProgressHUDAnimationType)animationType{
     if (!_isInitializing) _defaultAnimationType = animationType;
+}
+
+- (void)setDefaultStartingSize:(CGSize)defaultStartingSize{
+  if (!_isInitializing) _defaultStartingSize = defaultStartingSize;
 }
 
 - (void)setMinimumSize:(CGSize)minimumSize{
