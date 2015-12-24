@@ -31,12 +31,13 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 @property (nonatomic, strong, readonly) NSTimer *fadeOutTimer;
 @property (nonatomic, readonly, getter = isClear) BOOL clear;
 
-@property (nonatomic, strong) UIControl *overlayView;
 @property (nonatomic, strong) UIView *hudView;
-
-@property (nonatomic, strong) UILabel *stringLabel;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIView *indefiniteAnimatedView;
+@property (nonatomic, strong) UIControl *overlayView;
+@property (nonatomic, strong) UIImage *backgroundImage;
+
+@property (nonatomic, strong) UILabel *stringLabel;
 @property (nonatomic, strong) CALayer *backgroundLayer;
 
 @property (nonatomic, readwrite) CGFloat progress;
@@ -157,6 +158,11 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 
 + (void)setBackgroundColor:(UIColor*)color{
     [self sharedView].backgroundColor = color;
+}
+
++ (void)setBackgroundImage:(UIImage *)image
+{
+    [self sharedView].backgroundImage = image;
 }
 
 + (void)setInfoImage:(UIImage*)image{
@@ -426,6 +432,9 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     
     // Update values on subviews
     self.hudView.bounds = CGRectMake(0.0f, 0.0f, MAX(self.minimumSize.width, hudWidth), MAX(self.minimumSize.height, hudHeight));
+    if (self.backgroundImage) {
+        [self.hudView insertSubview:[[UIImageView alloc]initWithImage:self.backgroundImage] atIndex:0];
+    }
     labelRect.size.width += MAX(0, self.minimumSize.width - hudWidth);
     [self updateBlurBounds];
     
