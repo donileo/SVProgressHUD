@@ -1,8 +1,8 @@
 //
 //  ViewController.m
-//  SVProgressHUD, https://github.com/TransitApp/SVProgressHUD
+//  SVProgressHUD, https://github.com/SVProgressHUD/SVProgressHUD
 //
-//  Copyright (c) 2011-2014 Sam Vermette and contributors. All rights reserved.
+//  Copyright (c) 2011-2016 Sam Vermette and contributors. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -10,9 +10,6 @@
 
 @implementation ViewController
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
-}
 
 #pragma mark - Notification Methods Sample
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,7 +36,7 @@
                                                object:nil];
 }
 
-- (void)handleNotification:(NSNotification *)notification{
+- (void)handleNotification:(NSNotification *)notification {
     NSLog(@"Notification recieved: %@", notification.name);
     NSLog(@"Status user info key: %@", notification.userInfo[SVProgressHUDStatusUserInfoKey]);
 }
@@ -64,13 +61,14 @@ static float progress = 0.0f;
 }
 
 - (void)increaseProgress {
-    progress+=0.1f;
+    progress += 0.1f;
     [SVProgressHUD showProgress:progress status:@"Loading"];
 
-    if(progress < 1.0f)
+    if(progress < 1.0f){
         [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3f];
-    else
+    } else {
         [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.4f];
+    }
 }
 
 
@@ -80,7 +78,7 @@ static float progress = 0.0f;
 	[SVProgressHUD dismiss];
 }
 
-- (IBAction)showInfoWithStatus{
+- (IBAction)showInfoWithStatus {
     [SVProgressHUD showInfoWithStatus:@"Useful Information."];
 }
 
@@ -92,8 +90,10 @@ static float progress = 0.0f;
 	[SVProgressHUD showErrorWithStatus:@"Failed with Error"];
 }
 
+
 #pragma mark - Styling
-- (IBAction)changeStyle:(id)sender{
+
+- (IBAction)changeStyle:(id)sender {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     if(segmentedControl.selectedSegmentIndex == 0){
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
@@ -102,17 +102,16 @@ static float progress = 0.0f;
     }
 }
 
-- (IBAction)changeAnimationType:(id)sender{
+- (IBAction)changeAnimationType:(id)sender {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     if(segmentedControl.selectedSegmentIndex == 0){
         [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
     } else {
         [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
     }
-
 }
 
-- (IBAction)changeMaskType:(id)sender{
+- (IBAction)changeMaskType:(id)sender {
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     if(segmentedControl.selectedSegmentIndex == 0){
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
