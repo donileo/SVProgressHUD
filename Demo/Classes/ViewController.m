@@ -13,6 +13,25 @@
 
 #pragma mark - Notification Methods Sample
 
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  [self setupHUD];
+}
+
+- (void)setupHUD
+{
+  [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+  [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+  [SVProgressHUD setDefaultStartingSize:CGSizeMake(66.f, 66.f)];
+  [SVProgressHUD setCornerRadius:6.f];
+  [SVProgressHUD setRingRadius:16.f];
+  [SVProgressHUD setRingNoTextRadius:16.f];
+  [SVProgressHUD setRingThickness:4.f];
+  [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+  [SVProgressHUD setBackgroundColor:[UIColor redColor]];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
