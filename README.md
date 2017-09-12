@@ -11,7 +11,6 @@ Changes
   from all your classes.
 
 * Ability to set custom background image.
-=======
 
 # SVProgressHUD
 
