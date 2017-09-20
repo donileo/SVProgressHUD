@@ -477,7 +477,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
       backgroundImageView.frame = CGRectMake(0.f, 0.f, self.hudView.bounds.size.width, self.hudView.bounds.size.height);
       backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
       backgroundImageView.contentMode = UIViewContentModeScaleToFill;
-      [self.hudView insertSubview:backgroundImageView atIndex:0];
+      [self.hudView.contentView insertSubview:backgroundImageView atIndex:0];
     }
 
     // Animate value update
